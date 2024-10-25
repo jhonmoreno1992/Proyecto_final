@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <!-- Navigation-->
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="#!">Bienvenidos</a>
@@ -47,7 +47,7 @@
             </div>
         </div>
     </nav>
-    <!-- Header-->
+    
     <header class="bg-dark py-5" style="background:url('asset/imagen2.jpg')">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-black">
@@ -56,24 +56,24 @@
             </div>
         </div>
     </header>
-    <!-- Section-->
+    
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/producto1.jpg" alt="..." />
-                        <!-- Product details-->
+                        
                         <div class="card-body p-4 lila-background">
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Peluches</h5>
-                                <!-- Product price-->
+                                
                                 $15.000 - $50.000
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        
                         <div class="card-footer p-4 pt-0 border-top-0 lila-background">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ver Opciones</a></div>
                         </div>
@@ -81,18 +81,18 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/producto2.jpg" alt="..." />
-                        <!-- Product details-->
+                        
                         <div class="card-body p-4 lila-background">
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Flores</h5>
-                                <!-- Product price-->
+                                
                                 $4.000 - $50.000
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        
                         <div class="card-footer p-4 pt-0 border-top-0 lila-background">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ver Opciones</a></div>
                         </div>
@@ -100,16 +100,16 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Sale badge-->
+                        
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Oferta</div>
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/producto3.jpg" alt="..." />
-                        <!-- Product details-->
+                        
                         <div class="card-body p-4 lila-background">
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Chocolates</h5>
-                                <!-- Product reviews-->
+                                
                                 <div class="d-flex justify-content-center small text-warning mb-2">
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
@@ -117,12 +117,12 @@
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
                                 </div>
-                                <!-- Product price-->
+                                
                                 <span class="text-muted text-decoration-line-through">$10.000</span>
                                 $8.000
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        
                         <div class="card-footer p-4 pt-0 border-top-0 lila-background">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ver Opciones</a></div>
                         </div>
@@ -130,21 +130,21 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Sale badge-->
+                        
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Oferta</div>
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/ancheta.jpeg" alt="..." />
-                        <!-- Product details-->
+                        
                         <div class="card-body p-4 lila-background">
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Anchetas de Temporada</h5>
-                                <!-- Product price-->
+                                
                                 <span class="text-muted text-decoration-line-through">$50.000</span>
                                 $45.000
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        
                         <div class="card-footer p-4 pt-0 border-top-0 lila-background">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ver Opciones</a></div>
                         </div>
@@ -152,15 +152,15 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/peluche.jpeg" alt="..." />
-                        <!-- Product details-->
+                        
                         <div class="card-body p-4 lila-background">
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Destacado</h5>
                                 <h6>Peluche Charmander</h6>
-                                <!-- Product reviews-->
+                                
                                 <div class="d-flex justify-content-center small text-warning mb-2">
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
@@ -168,11 +168,11 @@
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
                                 </div>
-                                <!-- Product price-->
+                                
                                 $25.000
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        
                         <div class="card-footer p-4 pt-0 border-top-0 lila-background">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir</a></div>
                         </div>
@@ -180,39 +180,39 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Sale badge-->
+                        
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Oferta</div>
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/rosas.jpg" alt="Caja de Rosas" />
-                        <!-- Product details-->
-                        <div class="card-body p-4 lila-background"> <!-- Fondo lila en los detalles del producto -->
+                        
+                        <div class="card-body p-4 lila-background"> 
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Caja de Rosas</h5>
-                                <!-- Product price-->
+                                
                                 <span class="text-muted text-decoration-line-through">$30.000</span>
                                 $25.000
                             </div>
                         </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 lila-background"> <!-- Fondo lila en el pie de la tarjeta -->
+                        
+                        <div class="card-footer p-4 pt-0 border-top-0 lila-background"> 
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir</a></div>
                         </div>
                     </div>
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Sale badge-->
+                        
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Oferta</div>
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/combo.webp" alt="..." />
-                        <!-- Product details-->
+                        
                         <div class="card-body p-4 lila-background">
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Combo</h5>
                                 <h6>Vino/Chocolates/Rosas</h6>
-                                <!-- Product reviews-->
+                                
                                 <div class="d-flex justify-content-center small text-warning mb-2">
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
@@ -220,12 +220,12 @@
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
                                 </div>
-                                <!-- Product price-->
+                                
                                 <span class="text-muted text-decoration-line-through">$80.000</span>
                                 $70.000
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        
                         <div class="card-footer p-4 pt-0 border-top-0 lila-background">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir</a></div>
                         </div>
@@ -233,15 +233,15 @@
                 </div>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Product image-->
+                        
                         <img class="card-img-top" src="asset/desayuno sorpresa.jpg" alt="..." />
-                        <!-- Product details-->
+                        
                         <div class="card-body p-4 lila-background">
                             <div class="text-center">
-                                <!-- Product name-->
+                                
                                 <h5 class="fw-bolder">Destacado</h5>
                                 <h6>Desayuno Sorpresa Princesa</h6>
-                                <!-- Product reviews-->
+                                
                                 <div class="d-flex justify-content-center small text-warning mb-2">
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
@@ -249,11 +249,11 @@
                                     <div class="bi-star-fill"></div>
                                     <div class="bi-star-fill"></div>
                                 </div>
-                                <!-- Product price-->
+                                
                                 $30.000
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        
                         <div class="card-footer p-4 pt-0 border-top-0 lila-background">
                             <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir</a></div>
                         </div>
@@ -262,7 +262,7 @@
             </div>
         </div>
     </section>
-    <!-- Footer-->
+    
     <footer class="py-5" style="background:url('asset/imagen2.jpg')">
         <div class="container">
             <p class="m-0 text-center text-black">Copyright &copy; Detalles con Dulzura 2024</p>

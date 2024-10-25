@@ -19,20 +19,19 @@
                 <div class="col col-xl-10">
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
-                            <!-- Imagen de la izquierda cambiada -->
+                            
                             <div class="col-md-6 col-lg-5 d-none d-md-block">
-                                <img src="asset/peluche.jpeg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                                <img src="asset/fondo Izquierdo.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
                             </div>
 
-                            <!-- Formulario -->
                             <div class="col-md-6 col-lg-7.5 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-6 text-black">
 
                                     <form>
-                                        <!-- Logo con imagen -->
+                                        
                                         <div class="d-flex align-items-center mb-3 pb-1">
-                                            <img src="asset/facebook.png" alt="logo" style="width: 50px; height: 50px; margin-right: 10px;">
-                                            <span class="h1 fw-bold mb-0">Logo</span>
+                                            <img src="asset/logo.png" alt="logo" style="width: 50px; height: 50px; margin-right: 10px;">
+                                            <span class="h1 fw-bold mb-0">Detalles Con Dulzura</span>
                                         </div>
 
                                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicia Sesion En Tu Cuenta</h5>
