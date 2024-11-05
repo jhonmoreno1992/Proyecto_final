@@ -1,0 +1,23 @@
+body {
+    background-image: url("../asset/imagen2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.terms-container {
+    background-color: salmon;
+    border-radius: 10px;
+    border: 1px solid #dc3545;
+    padding: 20px;
+    max-width: 600px;
+    margin: 50px auto;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.btn-accept {
+    background-color: black;
+    color: white;
+    border: none;
+    margin-top: 15px;
+}
