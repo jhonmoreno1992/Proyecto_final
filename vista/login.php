@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['usuario'])) {
+    header('Location: dashboard.php');
+    exit;
+}
+
+$error = isset($_GET['error']) ? $_GET['error'] : "";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,15 +44,12 @@
                 <div class="col col-xl-10">
                     <div class="card" style="border-radius: 1rem;">
                         <div class="row g-0">
-
                             <div class="col-md-6 col-lg-5 d-none d-md-block">
                                 <img src="../asset/fondo Izquierdo.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
                             </div>
-
                             <div class="col-md-6 col-lg-7.5 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-6 text-black">
-
-                                    <form>
+                                    <form action="../controlador/usuarioscontroller.php" method="POST">
 
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <img src="../asset/logo.png" alt="logo" style="width: 50px; height: 50px; margin-right: 10px;">
@@ -51,19 +58,20 @@
 
                                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Inicia Sesion En Tu Cuenta</h5>
 
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form2Example17">Correo Electronico</label>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="usuario" name="usuario" class="form-control form-control-lg" required />
+                                            <label class="form-label" for="usuario">Usuario</label>
                                         </div>
-
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" id="form2Example27" class="form-control form-control-lg" />
-                                            <label class="form-label" for="form2Example27">Contraseña</label>
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="password" name="password" class="form-control form-control-lg" required />
+                                            <label class="form-label" for="password">Contraseña</label>
                                         </div>
-
                                         <div class="pt-1 mb-4">
-                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="button">Acceder</button>
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit">Acceder</button>
                                         </div>
+                                        <?php if ($error): ?>
+                                            <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+                                        <?php endif; ?>
 
                                         <a class="small text-muted" href="Recuperar.php">Olvidaste Tu Contraseña?</a>
                                         <p class="mb-5 pb-lg-2" style="color: gray;">Aun no Tienes Cuenta? <a href="registro.php" style="color: gray;">Registrate Aqui</a></p>
