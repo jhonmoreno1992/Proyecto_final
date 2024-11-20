@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($resultado) {
         $_SESSION['usuario'] = $resultado['usuario'];
+        $_SESSION['usuario_id'] = $resultado['idusuario'];
         header("Location: ../vista/dashboard.php");
         exit;
     } else {

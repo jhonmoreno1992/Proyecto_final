@@ -1,0 +1,30 @@
+body {
+    background-color: pink;
+    font-family: Arial, sans-serif;
+    font-size: large;
+}
+
+.about-container {
+    background-color: #f5d0d0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.about-container h1,
+.about-container h2 {
+    color: black;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: #e91e63;
+    border-color: #e91e63;
+}
+
+.btn-primary:hover {
+    background-color: #c2185b;
+    border-color: #c2185b;
+}

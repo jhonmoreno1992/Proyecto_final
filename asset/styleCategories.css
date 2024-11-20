@@ -1,0 +1,16 @@
+.category-header {
+    background-size: cover;
+    background-position: center;
+}
+
+.product-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.lila-background {
+    background-color: #f0e6ff;
+}

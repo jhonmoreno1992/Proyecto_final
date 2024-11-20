@@ -1,9 +1,9 @@
 <?php
-// vista/carrito.php
-
+session_start();
 require_once '../controlador/carrito_funciones.php';
+require_once '../modelo/conexion.php';
+require_once '../modelo/producto.php';
 
-// Procesar acciones del carrito
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['accion'])) {
         $id = $_POST['id'];
@@ -26,6 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $carrito = obtenerCarrito();
 $total = calcularTotal();
+
+$conexion = new Conexion();
+$db = $conexion->getConection();
+$producto = new Producto($db);
+
+foreach ($carrito as $id => $item) {
+    $productoDetalle = $producto->obtenerProductoPorId($id);
+    if ($productoDetalle) {
+        $carrito[$id]['nombre'] = $productoDetalle['nombreproducto'];
+        $carrito[$id]['precio'] = $productoDetalle['precio'];
+        $carrito[$id]['imagen'] = base64_encode($productoDetalle['imagen']);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +47,9 @@ $total = calcularTotal();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-    <title>carrito</title>
+    <title>Carrito - Detalles Con Dulzura</title>
 </head>
 
 <body>
@@ -47,12 +57,12 @@ $total = calcularTotal();
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="../asset/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+                    <img src="../asset/custom/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
                     Detalles Con Dulzura
                 </a>
-                <button class="btn btn-outline-dark" type="submit" onclick="window.location.href='index.php';">
-                    <i class="bi bi-house-fill"></i>
-                    Inicio
+                <button class="btn btn-outline-dark" type="button" onclick="window.history.back();">
+                    <i class="bi bi-chevron-left"></i>
+                    Volver
                 </button>
             </div>
         </nav>
@@ -65,7 +75,7 @@ $total = calcularTotal();
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><a href="index.php" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continuar Comprando</a></h5>
+                                    <h5 class="mb-3"><a href="index.php" class="text-body"><i class="bi bi-arrow-left me-2"></i>Continuar Comprando</a></h5>
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
@@ -75,34 +85,44 @@ $total = calcularTotal();
                                     </div>
 
                                     <?php foreach ($carrito as $id => $item): ?>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex flex-row align-items-center">
-                                                    <div class="ms-3">
-                                                        <h5><?php echo $item['nombre']; ?></h5>
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div>
+                                                            <img src="data:image/jpeg;base64,<?php echo $item['imagen']; ?>" class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5><?php echo htmlspecialchars($item['nombre']); ?></h5>
+                                                            <p class="small mb-0">$<?php echo number_format($item['precio'], 2); ?> cada uno</p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="d-flex flex-row align-items-center">
-                                                    <div style="width: 50px;">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div style="width: 50px;">
+                                                            <form method="POST" class="d-flex align-items-center">
+                                                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                                                <button type="submit" name="accion" value="disminuir" class="btn btn-link px-2">
+                                                                    <i class="bi bi-dash"></i>
+                                                                </button>
+                                                                <span class="mx-2"><?php echo $item['cantidad']; ?></span>
+                                                                <button type="submit" name="accion" value="incrementar" class="btn btn-link px-2">
+                                                                    <i class="bi bi-plus"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                        <div style="width: 80px;">
+                                                            <h5 class="mb-0">$<?php echo number_format($item['precio'] * $item['cantidad'], 2); ?></h5>
+                                                        </div>
                                                         <form method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                                            <button type="submit" name="accion" value="disminuir" class="btn btn-link">-</button>
-                                                            <span><?php echo $item['cantidad']; ?></span>
-                                                            <button type="submit" name="accion" value="incrementar" class="btn btn-link">+</button>
+                                                            <button type="submit" name="accion" value="eliminar" class="btn btn-link text-danger">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
                                                         </form>
                                                     </div>
-                                                    <div style="width: 80px;">
-                                                        <h5 class="mb-0">$<?php echo number_format($item['precio'] * $item['cantidad'], 2); ?></h5>
-                                                    </div>
-                                                    <form method="POST">
-                                                        <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                                        <button type="submit" name="accion" value="eliminar" class="btn btn-link text-danger"><i class="fas fa-trash-alt"></i></button>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <?php endforeach; ?>
 
                                 </div>
@@ -120,10 +140,24 @@ $total = calcularTotal();
                                                 <p class="mb-2">$<?php echo number_format($total, 2); ?></p>
                                             </div>
 
+                                            <div class="mb-3">
+                                                <label for="direccion_envio" class="form-label">Dirección de envío</label>
+                                                <input type="text" class="form-control" id="direccion_envio" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="metodo_pago" class="form-label">Método de pago</label>
+                                                <select class="form-select" id="metodo_pago" required>
+                                                    <option value="">Seleccione un método de pago</option>
+                                                    <option value="tarjeta">Tarjeta de crédito</option>
+                                                    <option value="paypal">PayPal</option>
+                                                    <option value="transferencia">Transferencia bancaria</option>
+                                                </select>
+                                            </div>
+
                                             <button type="button" class="btn btn-info btn-block btn-lg" onclick="simularPago()">
                                                 <div class="d-flex justify-content-between">
                                                     <span>$<?php echo number_format($total, 2); ?></span>
-                                                    <span>Pagar <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                                    <span>Pagar <i class="bi bi-arrow-right ms-2"></i></span>
                                                 </div>
                                             </button>
                                         </div>
@@ -137,18 +171,41 @@ $total = calcularTotal();
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    function simularPago() {
-        alert('Simulando pago en una plataforma de pagos...');
-        // Aquí puedes agregar lógica adicional para simular el proceso de pago
-        setTimeout(function() {
-            alert('Pago procesado con éxito. Gracias por tu compra!');
-            // Redirigir al usuario o limpiar el carrito después del pago exitoso
-            window.location.href = 'index.php';
-        }, 2000);
-    }
+        function simularPago() {
+            var direccionEnvio = document.getElementById('direccion_envio').value;
+            var metodoPago = document.getElementById('metodo_pago').value;
+
+            if (!direccionEnvio || !metodoPago) {
+                alert('Por favor, complete todos los campos requeridos.');
+                return;
+            }
+
+            alert('Procesando pago...');
+
+            fetch('../controlador/procesar_compra.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'direccion_envio=' + encodeURIComponent(direccionEnvio) + '&metodo_pago=' + encodeURIComponent(metodoPago)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        window.location.href = 'dashboard.php';
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Ocurrió un error al procesar la compra.');
+                });
+        }
     </script>
-
 </body>
-</html>
 
+</html>

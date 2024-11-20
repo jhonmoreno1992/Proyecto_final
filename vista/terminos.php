@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,13 +8,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../asset/styleterms.css">
     <title>Términos y Condiciones - Detalles Con Dulzura</title>
-    
+    <script>
+        function handleAccept() {
+            if (window.opener && !window.opener.closed) {
+
+                window.opener.postMessage('terms_accepted', '*');
+                window.close();
+            } else {
+
+                window.history.back();
+            }
+        }
+    </script>
+
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="../asset/logo.png" alt="Logo" style="height: 30px;">Detalles Con Dulzura</a>
+            <a class="navbar-brand" href="#"><img src="../asset/custom/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">Detalles Con Dulzura</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -67,7 +79,7 @@
 
 
         <div class="text-center">
-            <button class="btn btn-accept btn-lg" type="button" onclick="window.location.href='index.php';">Aceptar</button>
+            <button class="btn btn-accept btn-lg" type="button" onclick="handleAccept()">Aceptar</button>
         </div>
     </div>
     <footer class="bg-light py-3 mt-4">

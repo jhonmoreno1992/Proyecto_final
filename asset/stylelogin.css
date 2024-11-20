@@ -1,0 +1,13 @@
+.card {
+    max-width: 1000px;
+}
+.card-img {
+    max-height: 400px;
+    object-fit: cover;
+}
+.form-control-lg {
+    font-size: 0.9rem;
+}
+.card-body {
+    padding: 2rem;
+}
