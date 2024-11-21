@@ -15,15 +15,16 @@ $conn = $conexion->getConection();
 
 $stmt = $conn->prepare("
     SELECT c.compra_id, c.fecha, c.total, c.estado, c.direccion_envio, c.metodo_pago,
-           GROUP_CONCAT(CONCAT(dc.cantidad, 'x ', p.nombre) SEPARATOR ', ') AS productos
+           GROUP_CONCAT(CONCAT(dc.cantidad, 'x ', p.nombreproducto) SEPARATOR ', ') AS productos
     FROM compras c
     JOIN detalles_compra dc ON c.compra_id = dc.compra_id
-    JOIN productos p ON dc.idproducto = p.id
-    WHERE c.idusuario = ?
+    JOIN producto p ON dc.idproducto = p.idproducto
+    WHERE c.idusuario = :userId
     GROUP BY c.compra_id
     ORDER BY c.fecha DESC
 ");
-$stmt->execute([$userId]);
+$stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+$stmt->execute();
 $historial = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -34,60 +35,35 @@ $historial = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Compras - Detalles Con Dulzura</title>
+    <link rel="stylesheet" href="../asset/stylehistory.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-    <style>
-        body {
-            background-color: #FFE6F2;
-        }
 
-        .navbar {
-            background-color: #FF69B4 !important;
-        }
-
-        .card {
-            background-color: #FFF0F5;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-primary {
-            background-color: #FF1493;
-            border-color: #FF1493;
-        }
-
-        .btn-primary:hover {
-            background-color: #FF69B4;
-            border-color: #FF69B4;
-        }
-    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="../asset/custom/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-top">
+                <img src="../asset/custom/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
                 Detalles Con Dulzura
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="btn btn-outline-dark" type="button" onclick="window.history.back();">
+                <i class="bi bi-chevron-left"></i>
+                Volver
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.php">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Cerrar Sesión</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
+    <header class="bg-dark py-5" style="background:url('../asset/custom/imagen2.jpg')">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-black">
+                <h1 class="display-4 fw-bolder">HISTORIAL DE COMPRAS</h1>
+                <p class="lead fw-normal text-black">Verifica Las compras que has adquirido con nosotros</p>
+            </div>
+        </div>
+    </header>
 
     <div class="container mt-4">
-        <h1 class="text-center mb-4">Historial de Compras</h1>
         <?php if (empty($historial)): ?>
             <div class="alert alert-info" role="alert">
                 No tienes compras registradas aún.
@@ -112,6 +88,11 @@ $historial = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         <?php endif; ?>
     </div>
+    <footer class="py-5" style="background:url('../asset/custom/imagen2.jpg')">
+        <div class="container">
+            <p class="m-0 text-center text-black">Copyright &copy; Detalles con Dulzura 2024</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

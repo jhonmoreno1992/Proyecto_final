@@ -21,7 +21,7 @@ if (!$db) {
 $usuario_id = $_SESSION['usuario_id'];
 
 $query = "SELECT c.compra_id, c.fecha, c.total, c.estado, c.direccion_envio, c.metodo_pago
-          FROM compras c
+          FROM compras c JOIN detalles_compra dc ON c.compra_id = dc.compra_id
           WHERE c.idusuario = :usuario_id
           ORDER BY c.fecha DESC";
 $stmt = $db->prepare($query);
