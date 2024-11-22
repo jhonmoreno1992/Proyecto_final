@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <button class="btn btn-outline-dark" type="submit" onclick="window.location.href='index.php';">
+                        <button class="btn btn-outline-dark" type="submit" onclick="window.location.href='../index.php';">
                             <i class="bi bi-house-fill"></i>
                             Inicio
                         </button>

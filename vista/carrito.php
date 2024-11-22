@@ -75,7 +75,7 @@ foreach ($carrito as $id => $item) {
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><a href="index.php" class="text-body"><i class="bi bi-arrow-left me-2"></i>Continuar Comprando</a></h5>
+                                    <h5 class="mb-3"><a href="../index.php" class="text-body"><i class="bi bi-arrow-left me-2"></i>Continuar Comprando</a></h5>
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>

@@ -29,7 +29,7 @@ $error = isset($_GET['error']) ? $_GET['error'] : "";
                     <img src="../asset/custom/logo.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
                     Detalles Con Dulzura
                 </a>
-                <button class="btn btn-outline-dark" type="button" onclick="window.location.href='index.php';">
+                <button class="btn btn-outline-dark" type="button" onclick="window.location.href='../index.php';">
                     <i class="bi bi-house-fill"></i>
                     Inicio
                 </button>

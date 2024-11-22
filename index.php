@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once '../controlador/carrito_funciones.php';
-require_once '../modelo/conexion.php';
-require_once '../modelo/producto.php';
+require_once './controlador/carrito_funciones.php';
+require_once './modelo/conexion.php';
+require_once './modelo/producto.php';
 
 $carrito = obtenerCarrito();
 $totalItems = array_sum(array_column($carrito, 'cantidad'));
@@ -32,30 +32,30 @@ $productos = $producto->obtenerProductosAleatorios(8);
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link" href="nosotros.php">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./vista/nosotros.php">Nosotros</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="desayunos.php">Desayunos</a></li>
-                            <li><a class="dropdown-item" href="anchetas.php">Anchetas</a></li>
-                            <li><a class="dropdown-item" href="flores.php">Flores</a></li>
-                            <li><a class="dropdown-item" href="peluches.php">Peluches</a></li>
+                            <li><a class="dropdown-item" href="./vista/desayunos.php">Desayunos</a></li>
+                            <li><a class="dropdown-item" href="./vista/anchetas.php">Anchetas</a></li>
+                            <li><a class="dropdown-item" href="./vista/flores.php">Flores</a></li>
+                            <li><a class="dropdown-item" href="./vista/peluches.php">Peluches</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="d-flex">
                     <?php if (isset($_SESSION['usuario'])): ?>
-                        <a href="dashboard.php" class="btn btn-outline-dark me-2">
+                        <a href="./vista/dashboard.php" class="btn btn-outline-dark me-2">
                             <i class="bi-person-fill me-1"></i>
                             Mi Cuenta
                         </a>
                     <?php else: ?>
-                        <a href="login.php" class="btn btn-outline-dark me-2">
+                        <a href="./vista/login.php" class="btn btn-outline-dark me-2">
                             <i class="bi-person-fill me-1"></i>
                             Iniciar Sesión
                         </a>
                     <?php endif; ?>
-                    <a href="carrito.php" class="btn btn-outline-dark">
+                    <a href="./vista/carrito.php" class="btn btn-outline-dark">
                         <i class="bi-cart-fill me-1"></i>
                         Carrito
                         <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $totalItems; ?></span>
