@@ -97,28 +97,26 @@ foreach ($carrito as $id => $item) {
                                                             <p class="small mb-0">$<?php echo number_format($item['precio'], 2); ?> cada uno</p>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex flex-row align-items-center">
-                                                        <div style="width: 50px;">
-                                                            <form method="POST" class="d-flex align-items-center">
+                                                    <div class="d-flex flex-column align-items-end">
+                                                        <div class="btn-group mb-2" role="group">
+                                                            <form method="POST">
                                                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                                                <button type="submit" name="accion" value="disminuir" class="btn btn-link px-2">
-                                                                    <i class="bi bi-dash"></i>
+                                                                <button type="submit" name="accion" value="disminuir" class="btn btn-warning btn-sm">
+                                                                    <i class="bi bi-dash fs-5"></i>
                                                                 </button>
-                                                                <span class="mx-2"><?php echo $item['cantidad']; ?></span>
-                                                                <button type="submit" name="accion" value="incrementar" class="btn btn-link px-2">
-                                                                    <i class="bi bi-plus"></i>
+                                                                <span class="btn btn-light btn-sm disabled"><?php echo $item['cantidad']; ?></span>
+                                                                <button type="submit" name="accion" value="incrementar" class="btn btn-success btn-sm">
+                                                                    <i class="bi bi-plus fs-5"></i>
                                                                 </button>
                                                             </form>
                                                         </div>
-                                                        <div style="width: 80px;">
-                                                            <h5 class="mb-0">$<?php echo number_format($item['precio'] * $item['cantidad'], 2); ?></h5>
-                                                        </div>
                                                         <form method="POST">
                                                             <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                                            <button type="submit" name="accion" value="eliminar" class="btn btn-link text-danger">
-                                                                <i class="bi bi-trash"></i>
+                                                            <button type="submit" name="accion" value="eliminar" class="btn btn-danger btn-sm">
+                                                                <i class="bi bi-trash fs-5"></i> Eliminar
                                                             </button>
                                                         </form>
+                                                        <h5 class="mt-2">$<?php echo number_format($item['precio'] * $item['cantidad'], 2); ?></h5>
                                                     </div>
                                                 </div>
                                             </div>
